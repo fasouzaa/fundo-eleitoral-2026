@@ -18,15 +18,25 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Download e processar TSE
+      - name: Tentar download e processar TSE
         id: etl
+        continue-on-error: true
         run: |
           set -euo pipefail
           python etl/build_dataset.py --download
-          echo "ok=true" >> "$GITHUB_OUTPUT"
+          echo "updated=true" >> "$GITHUB_OUTPUT"
+
+      - name: Aviso se CDN bloqueou (comum em Actions)
+        if: steps.etl.outcome == 'failure'
+        run: |
+          echo "::warning::CDN do TSE (Akamai) costuma bloquear IPs do GitHub Actions (HTTP 403)."
+          echo "Atualize localmente com: python etl/build_dataset.py --download"
+          echo "No Windows, BITS costuma funcionar. Depois faça commit/push de web/public/data."
+          test -f web/public/data/summary.json
+          echo "Dados já commitados no repo permanecem válidos."
 
       - name: Commit e push se houver mudança
-        if: steps.etl.outputs.ok == 'true'
+        if: steps.etl.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
