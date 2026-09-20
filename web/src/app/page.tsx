@@ -27,6 +27,12 @@ export default async function HomePage() {
             Explorar por UF e cargo
           </Link>
           <Link
+            href="/criterios"
+            className="rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] transition hover:bg-[var(--wash)]"
+          >
+            Critérios dos partidos
+          </Link>
+          <Link
             href="/metodologia"
             className="rounded-md border border-[var(--line)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] transition hover:bg-[var(--wash)]"
           >

@@ -17,7 +17,7 @@ web/.vercel/
 .env
 .env*.local
 
-# raw TSE dumps (large ~140MB+)
+# raw TSE dumps (large ~140MB+) and critérios PDFs
 data/raw/**
 !data/raw/.gitkeep
 

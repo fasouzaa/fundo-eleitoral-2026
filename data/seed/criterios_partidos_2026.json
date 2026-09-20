@@ -1,0 +1,311 @@
+[
+  {
+    "sigla": "AGIR",
+    "nome": "AGIR",
+    "pje": "0601331-51.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "agir"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "AVANTE",
+    "nome": "AVANTE",
+    "pje": "0601256-12.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "avante"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "CIDADANIA",
+    "nome": "CIDADANIA",
+    "pje": "0601386-02.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "cidadania"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "DC",
+    "nome": "DC",
+    "pje": "0601294-24.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "dc"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "DEMOCRATA",
+    "nome": "DEMOCRATA",
+    "pje": "0601633-80.2026.6.00.0000",
+    "liberado_em": null,
+    "slugs": [
+      "democrata"
+    ],
+    "tem_arquivo": false
+  },
+  {
+    "sigla": "MDB",
+    "nome": "MDB",
+    "pje": "0601241-43.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "mdb"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "MISSÃO",
+    "nome": "MISSÃO",
+    "pje": "0601201-61.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "missao",
+      "missão"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "MOBILIZA",
+    "nome": "MOBILIZA",
+    "pje": "0601289-02.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "mobiliza"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "NOVO",
+    "nome": "NOVO",
+    "pje": "0601242-28.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "novo"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PCB",
+    "nome": "PCB",
+    "pje": "0601258-79.2026.6.00.0000",
+    "liberado_em": null,
+    "slugs": [
+      "pcb"
+    ],
+    "tem_arquivo": false
+  },
+  {
+    "sigla": "PC do B",
+    "nome": "PC do B",
+    "pje": "0601045-73.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "pcdob",
+      "pc_do_b",
+      "pc-do-b",
+      "partido_comunista_do_brasil"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PCO",
+    "nome": "PCO",
+    "pje": "0601433-73.2026.6.00.0000",
+    "liberado_em": "11.9.2026",
+    "slugs": [
+      "pco"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PDT",
+    "nome": "PDT",
+    "pje": "0601505-60.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "pdt"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PL",
+    "nome": "PL",
+    "pje": "0600974-71.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "pl"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PODE",
+    "nome": "PODEMOS",
+    "pje": "0601313-30.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "podemos",
+      "pode"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PRD",
+    "nome": "PRD",
+    "pje": "0601394-76.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "prd"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PP",
+    "nome": "PROGRESSISTAS",
+    "pje": "0601183-40.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "progressistas",
+      "pp"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PRTB",
+    "nome": "PRTB",
+    "pje": "0601423-29.2026.6.00.0000",
+    "liberado_em": "27.8.2026",
+    "slugs": [
+      "prtb"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PSB",
+    "nome": "PSB",
+    "pje": "0601246-65.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "psb"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PSD",
+    "nome": "PSD",
+    "pje": "0601228-44.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "psd"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PSDB",
+    "nome": "PSDB",
+    "pje": "0601282-10.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "psdb"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PSOL",
+    "nome": "PSOL",
+    "pje": "0601317-67.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "psol"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PSTU",
+    "nome": "PSTU",
+    "pje": "0601348-87.2026.6.00.0000",
+    "liberado_em": "25.8.2026",
+    "slugs": [
+      "pstu"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PT",
+    "nome": "PT",
+    "pje": "0601252-72.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "pt"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "PV",
+    "nome": "PV",
+    "pje": "0601401-68.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "pv"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "REDE",
+    "nome": "REDE",
+    "pje": "0601400-83.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "rede"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "REPUBLICANOS",
+    "nome": "REPUBLICANOS",
+    "pje": "0601044-88.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "republicanos"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "SOLIDARIEDADE",
+    "nome": "SOLIDARIEDADE",
+    "pje": "0601298-61.2026.6.00.0000",
+    "liberado_em": "20.8.2026",
+    "slugs": [
+      "solidariedade"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "UNIÃO",
+    "nome": "UNIÃO BRASIL",
+    "pje": "0601251-87.2026.6.00.0000",
+    "liberado_em": "21.8.2026",
+    "slugs": [
+      "uniao_brasil",
+      "uniao",
+      "união_brasil"
+    ],
+    "tem_arquivo": true
+  },
+  {
+    "sigla": "UP",
+    "nome": "UP",
+    "pje": "0601351-42.2026.6.00.0000",
+    "liberado_em": "02.9.2026",
+    "slugs": [
+      "up",
+      "unidade_popular"
+    ],
+    "tem_arquivo": true
+  }
+]

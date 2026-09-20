@@ -6,6 +6,7 @@
     "build": "npm run build --prefix web",
     "lint": "npm run lint --prefix web",
     "data:demo": "python etl/generate_demo.py",
-    "data:tse": "python etl/build_dataset.py --download"
+    "data:tse": "python etl/build_dataset.py --download",
+    "data:criterios": "python etl/build_criterios.py"
   }
 }
