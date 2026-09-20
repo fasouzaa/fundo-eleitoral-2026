@@ -1,0 +1,11 @@
+{
+  "name": "fundo-eleitoral-2026",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix web",
+    "build": "npm run build --prefix web",
+    "lint": "npm run lint --prefix web",
+    "data:demo": "python etl/generate_demo.py",
+    "data:tse": "python etl/build_dataset.py --download"
+  }
+}

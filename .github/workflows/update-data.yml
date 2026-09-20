@@ -1,0 +1,39 @@
+name: Atualizar dados FEFC
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 11 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download e processar TSE
+        id: etl
+        run: |
+          set -euo pipefail
+          python etl/build_dataset.py --download
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit e push se houver mudança
+        if: steps.etl.outputs.ok == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/processed web/public/data
+          if git diff --staged --quiet; then
+            echo "Sem alteração nos dados."
+          else
+            git commit -m "chore: atualiza dados FEFC do TSE"
+            git push
+          fi

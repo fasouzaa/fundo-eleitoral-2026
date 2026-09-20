@@ -1,0 +1,10 @@
+# Build context helpers
+.git
+**/node_modules
+web/.next
+web/out
+data/raw
+**/.venv
+**/__pycache__
+*.md
+.github

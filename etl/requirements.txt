@@ -1,0 +1,2 @@
+# stdlib-only ETL; optional speed-ups later:
+# polars>=1.0
