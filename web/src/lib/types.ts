@@ -14,6 +14,8 @@ export type PartidoRepasse = {
   declarado_candidatos: number;
   gap: number;
   pct_repassado: number;
+  n_candidatos?: number;
+  media_por_candidato?: number;
 };
 
 export type CandidatoFefc = {
@@ -25,6 +27,12 @@ export type CandidatoFefc = {
   valor: number;
 };
 
+export type DimensaoValor = {
+  valor: number;
+  n_candidatos?: number;
+  media_por_candidato?: number;
+};
+
 export type Summary = {
   meta: {
     ano: number;
@@ -33,14 +41,15 @@ export type Summary = {
     total_declarado_candidatos: number;
     n_candidatos_com_fefc: number;
     n_lancamentos: number;
+    media_nacional_por_candidato?: number;
     modo: "demo" | "tse_prestacao" | string;
     aviso: string;
     fontes: string[];
   };
   cotas_partidos: PartidoCota[];
   por_partido: PartidoRepasse[];
-  por_uf: { uf: string; valor: number }[];
-  por_cargo: { cargo: string; valor: number }[];
+  por_uf: ({ uf: string } & DimensaoValor)[];
+  por_cargo: ({ cargo: string } & DimensaoValor)[];
   por_uf_cargo: { uf: string; cargo: string; valor: number }[];
   top_candidatos: CandidatoFefc[];
 };

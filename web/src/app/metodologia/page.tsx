@@ -39,6 +39,22 @@ export default function MetodologiaPage() {
 
       <section className="space-y-2 text-[var(--muted)]">
         <h2 className="font-[family-name:var(--font-display)] text-xl text-[var(--ink)]">
+          Cota × declarado e média por candidato
+        </h2>
+        <p>
+          O painel cruza a <strong className="text-[var(--ink)]">cota</strong>{" "}
+          oficial do partido com a soma das receitas FEFC na prestação (
+          <strong className="text-[var(--ink)]">declarado</strong>). A diferença
+          é o gap. A{" "}
+          <strong className="text-[var(--ink)]">média por candidato</strong> é
+          declarado ÷ número de candidatos que receberam FEFC — não inclui
+          quem não recebeu nada. Por isso serve para comparar concentração, não
+          para estimar o “valor médio de toda a legenda”.
+        </p>
+      </section>
+
+      <section className="space-y-2 text-[var(--muted)]">
+        <h2 className="font-[family-name:var(--font-display)] text-xl text-[var(--ink)]">
           Como processamos
         </h2>
         <p>

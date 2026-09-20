@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BarList } from "@/components/BarList";
+import { GapTable } from "@/components/GapTable";
 import { getSummary } from "@/lib/data";
 import { formatBRL, formatCompactBRL, formatDateIso, formatPct } from "@/lib/format";
 
@@ -8,6 +9,20 @@ export default async function HomePage() {
   const { meta, por_partido, por_uf, por_cargo, cotas_partidos } = summary;
   const top3 = [...cotas_partidos].sort((a, b) => b.total - a.total).slice(0, 3);
   const top3Share = top3.reduce((s, p) => s + p.pct, 0);
+  const pctDeclarado =
+    meta.total_fefc_oficial > 0
+      ? meta.total_declarado_candidatos / meta.total_fefc_oficial
+      : 0;
+  const mediaPorPartido = [...por_partido]
+    .filter((p) => (p.media_por_candidato ?? 0) > 0)
+    .sort(
+      (a, b) => (b.media_por_candidato ?? 0) - (a.media_por_candidato ?? 0),
+    );
+  const mediaPorUf = [...por_uf]
+    .filter((u) => (u.media_por_candidato ?? 0) > 0)
+    .sort(
+      (a, b) => (b.media_por_candidato ?? 0) - (a.media_por_candidato ?? 0),
+    );
 
   return (
     <div className="space-y-10">
@@ -50,7 +65,7 @@ export default async function HomePage() {
         </p>
       )}
 
-      <section className="grid gap-4 sm:grid-cols-3">
+      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-4">
           <p className="text-xs uppercase tracking-wide text-[var(--muted)]">
             Total do FEFC
@@ -70,8 +85,19 @@ export default async function HomePage() {
             {formatCompactBRL(meta.total_declarado_candidatos)}
           </p>
           <p className="mt-1 text-xs text-[var(--muted)]">
-            {meta.n_candidatos_com_fefc.toLocaleString("pt-BR")} candidatos com
-            receita FEFC
+            {formatPct(pctDeclarado)} da cota ·{" "}
+            {meta.n_candidatos_com_fefc.toLocaleString("pt-BR")} beneficiários
+          </p>
+        </div>
+        <div className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-4">
+          <p className="text-xs uppercase tracking-wide text-[var(--muted)]">
+            Média por candidato
+          </p>
+          <p className="mt-1 font-[family-name:var(--font-display)] text-2xl tabular-nums">
+            {formatCompactBRL(meta.media_nacional_por_candidato ?? 0)}
+          </p>
+          <p className="mt-1 text-xs text-[var(--muted)]">
+            Só entre quem recebeu FEFC declarado
           </p>
         </div>
         <div className="rounded-lg border border-[var(--line)] bg-[var(--surface)] p-4">
@@ -84,6 +110,53 @@ export default async function HomePage() {
           <p className="mt-1 text-xs text-[var(--muted)]">
             {top3.map((p) => p.sigla).join(", ")} nas cotas partidárias
           </p>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="font-[family-name:var(--font-display)] text-xl">
+          Cota × declarado por partido
+        </h2>
+        <p className="mb-4 mt-1 text-sm text-[var(--muted)]">
+          Gap positivo = ainda não declarado a candidatos (ou retido no
+          partido). Negativo = declarado acima da cota (repasse/ajuste na
+          prestação). Média = declarado ÷ candidatos com FEFC.
+        </p>
+        <GapTable rows={por_partido} />
+      </section>
+
+      <section className="grid gap-8 lg:grid-cols-2">
+        <div>
+          <h2 className="font-[family-name:var(--font-display)] text-xl">
+            Maior média por candidato (partido)
+          </h2>
+          <p className="mb-4 mt-1 text-sm text-[var(--muted)]">
+            Quem concentra mais FEFC por beneficiário — útil para comparar
+            partidos com bancadas de tamanhos diferentes.
+          </p>
+          <BarList
+            items={mediaPorPartido.map((p) => ({
+              label: p.sigla,
+              value: p.media_por_candidato ?? 0,
+            }))}
+            maxItems={12}
+          />
+        </div>
+        <div>
+          <h2 className="font-[family-name:var(--font-display)] text-xl">
+            Maior média por candidato (UF)
+          </h2>
+          <p className="mb-4 mt-1 text-sm text-[var(--muted)]">
+            Estados onde cada beneficiário recebeu, em média, mais FEFC.
+            Comparar com o total por UF: total alto ≠ média alta.
+          </p>
+          <BarList
+            items={mediaPorUf.map((u) => ({
+              label: u.uf,
+              value: u.media_por_candidato ?? 0,
+            }))}
+            maxItems={12}
+          />
         </div>
       </section>
 
@@ -122,7 +195,7 @@ export default async function HomePage() {
 
       <section>
         <h2 className="font-[family-name:var(--font-display)] text-xl">
-          Por UF (declarado)
+          Por UF (total declarado)
         </h2>
         <p className="mb-4 mt-1 text-sm text-[var(--muted)]">
           Estados com mais FEFC declarado a candidatos. Presidente aparece como

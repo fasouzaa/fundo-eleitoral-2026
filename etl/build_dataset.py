@@ -279,9 +279,18 @@ def aggregate(rows: list[dict], cotas: dict) -> dict:
         c["valor"] = round(c["valor"], 2)
 
     cotas_map = {p["sigla"]: p["total"] for p in cotas["partidos"]}
+    n_por_partido: dict[str, int] = defaultdict(int)
+    n_por_uf: dict[str, int] = defaultdict(int)
+    n_por_cargo: dict[str, int] = defaultdict(int)
+    for c in candidatos:
+        n_por_partido[c["partido"]] += 1
+        n_por_uf[c["uf"]] += 1
+        n_por_cargo[c["cargo"]] += 1
+
     partido_rows = []
     for sigla, total_cota in sorted(cotas_map.items(), key=lambda x: -x[1]):
         declarado = round(by_partido.get(sigla, 0.0), 2)
+        n = n_por_partido.get(sigla, 0)
         partido_rows.append(
             {
                 "sigla": sigla,
@@ -289,6 +298,8 @@ def aggregate(rows: list[dict], cotas: dict) -> dict:
                 "declarado_candidatos": declarado,
                 "gap": round(total_cota - declarado, 2),
                 "pct_repassado": round(declarado / total_cota, 6) if total_cota else 0.0,
+                "n_candidatos": n,
+                "media_por_candidato": round(declarado / n, 2) if n else 0.0,
             }
         )
 
@@ -302,10 +313,14 @@ def aggregate(rows: list[dict], cotas: dict) -> dict:
             "total_declarado_candidatos": total_declarado,
             "n_candidatos_com_fefc": len(candidatos),
             "n_lancamentos": len(rows),
+            "media_nacional_por_candidato": (
+                round(total_declarado / len(candidatos), 2) if candidatos else 0.0
+            ),
             "modo": "tse_prestacao",
             "aviso": (
                 "Valores por candidato/UF/cargo vêm da prestação de contas (fonte FEFC). "
-                "Podem estar incompletos enquanto a campanha e as prestações avançam."
+                "Podem estar incompletos enquanto a campanha e as prestações avançam. "
+                "Média por candidato = declarado ÷ candidatos que receberam FEFC."
             ),
             "fontes": [
                 cotas["fonte"],
@@ -315,11 +330,25 @@ def aggregate(rows: list[dict], cotas: dict) -> dict:
         "cotas_partidos": cotas["partidos"],
         "por_partido": partido_rows,
         "por_uf": [
-            {"uf": k, "valor": round(v, 2)}
+            {
+                "uf": k,
+                "valor": round(v, 2),
+                "n_candidatos": n_por_uf.get(k, 0),
+                "media_por_candidato": (
+                    round(v / n_por_uf[k], 2) if n_por_uf.get(k) else 0.0
+                ),
+            }
             for k, v in sorted(by_uf.items(), key=lambda x: -x[1])
         ],
         "por_cargo": [
-            {"cargo": k, "valor": round(v, 2)}
+            {
+                "cargo": k,
+                "valor": round(v, 2),
+                "n_candidatos": n_por_cargo.get(k, 0),
+                "media_por_candidato": (
+                    round(v / n_por_cargo[k], 2) if n_por_cargo.get(k) else 0.0
+                ),
+            }
             for k, v in sorted(by_cargo.items(), key=lambda x: -x[1])
         ],
         "por_uf_cargo": [
